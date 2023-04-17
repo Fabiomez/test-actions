@@ -17,7 +17,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_GITHUB_ACTIONS }}
       run: |
-        version=$(echo "${{ github.head_ref }}" | sed 's/refs\/heads\/release\///' | senver)
+        version=$(echo "${{ github.head_ref }}" | sed 's/refs\/heads\/release\///')
         git tag $version
         git push origin $version
         body=$(git log --format=%B -n 1 $GITHUB_SHA)
