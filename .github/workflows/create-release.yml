@@ -15,7 +15,7 @@ jobs:
         git config --global user.email "${{ github.event.sender.email }}"
     - name: Create tag and release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_GITHUB_ACTIONS }}
       run: |
         version=$(echo "${{ github.head_ref }}" | sed 's/refs\/heads\/release\///' | senver)
         git tag $version
